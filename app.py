@@ -24,9 +24,28 @@ app.config['MODEL_FOLDER'] = MODEL_FOLDER
 def create_model_file():
     model_path = os.path.join(app.config['MODEL_FOLDER'], 'modelo_planilha.xlsx')
     if not os.path.exists(model_path):
-        columns = ['ESPECIE', 'CNPJ', 'ACUMULADOR', 'CFOP', 'NF', 'DATA ENTRADA', 'VALOR', 'IRRF', 'CSRF']
-        df = pd.DataFrame(columns=columns)
+        # Cria um DataFrame com as colunas na ordem correta
+        columns = ['CNPJ', 'NF', 'DATA ENTRADA', 'VALOR', 'IRRF', 'CSRF', 'ESPECIE', 'ACUMULADOR', 'CFOP']
+        
+        # Adiciona uma linha de exemplo
+        data = {
+            'CNPJ': ['12345678000199'],  # Exemplo de CNPJ
+            'NF': ['12345'],             # Exemplo de número da nota fiscal
+            'DATA ENTRADA': ['01/01/2023'],  # Exemplo de data
+            'VALOR': [1000.00],          # Exemplo de valor
+            'IRRF': [15.00],             # Exemplo de IRRF
+            'CSRF': [46.50],             # Exemplo de CSRF
+            'ESPECIE': ['Nota Fiscal'],  # Exemplo de espécie
+            'ACUMULADOR': ['Exemplo'],   # Exemplo de acumulador
+            'CFOP': ['5102']             # Exemplo de CFOP
+        }
+        
+        # Cria o DataFrame
+        df = pd.DataFrame(data, columns=columns)
+        
+        # Salva o DataFrame como um arquivo Excel
         df.to_excel(model_path, index=False)
+        print(f"Arquivo modelo criado em: {model_path}")  # Log para depuração
 
 create_model_file()
 
@@ -101,4 +120,4 @@ def process_file(filepath):
     return output_filename
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host='0.0.0.0', port=5000, debug=True)
