@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Processamento de Notas Fiscais de Entrada</title>
+    <title>Importação de Notas Fiscais de Entrada</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <!-- Imagem no canto direito -->
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="corner-image">
 
-        <h1>Processamento de Notas Fiscais de Entrada</h1>
+        <h1>Importação de Notas Fiscais de Entrada</h1>
         <form method="POST" enctype="multipart/form-data">
             <input type="file" name="file" accept=".xlsx, .xls" required>
             <button type="submit">Processar Arquivo</button>
