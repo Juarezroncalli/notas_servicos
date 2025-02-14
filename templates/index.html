@@ -16,7 +16,7 @@
             <input type="file" name="file" accept=".xlsx, .xls" required>
             <button type="submit">Processar Arquivo</button>
         </form>
-        <a href="{{ url_for('model') }}" class="download-button">Baixar Planilha Modelo</a>
+        <a href="{{ url_for('download_model') }}" class="download-button">Baixar Planilha Modelo</a>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="messages">
